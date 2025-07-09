@@ -1,0 +1,60 @@
+/* =============================================
+   ARQUIVO PRINCIPAL DE ESTILOS (main.css)
+   ============================================= */
+
+/* 1. IMPORTAÇÃO DE TODOS OS ARQUIVOS CSS
+   A regra @import DEVE ser a primeira coisa no arquivo.
+*/
+@import url('components/_header.css');
+@import url('components/_footer.css');
+@import url('components/_buttons.css');
+@import url('components/_forms.css');
+@import url('pages/landing.css');
+@import url('pages/login.css');
+@import url('pages/perfil.css');
+@import url('components/_preloader.css'); /* <-- ADICIONE ESTA LINHA */
+/* Adicione aqui futuras importações de CSS */
+
+/* 2. FONTES E VARIÁVEIS GLOBAIS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+    /* Paleta Principal */
+    --cor-primaria: #4f8cff;
+    --cor-destaque: #00c896;
+
+    /* Tons Neutros e de Texto */
+    --cor-texto-principal: #1e293b;
+    --cor-texto-secundario: #475569;
+
+    /* Fundos */
+    --cor-fundo: #ffffff;
+    --cor-fundo-alternativo: #f8f9fc;
+    --cor-fundo-claro: #eef2ff;
+
+    /* Elementos de UI */
+    --cor-borda: #e2e8f0;
+    --radius: 8px;
+    --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+
+    /* Fonte */
+    --font-primary: 'Poppins', sans-serif;
+}
+
+/* 3. RESET GLOBAL E ESTILOS DO BODY */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}

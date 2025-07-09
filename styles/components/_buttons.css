@@ -1,0 +1,38 @@
+/* Estilos para botões reutilizáveis */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-family: var(--font-primary);
+    font-weight: 700;
+    color: #fff;
+    background: var(--cor-primaria);
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(79, 140, 255, 0.2);
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(79, 140, 255, 0.3);
+}
+
+.header-login-button {
+    background: var(--cor-primaria);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.header-login-button:hover {
+    background: var(--cor-texto-principal);
+    transform: translateY(-2px);
+}

@@ -5,130 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesse sua Conta - Ingleis</title>
     
-    <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
-    <style>
-        body {
-            background-color: var(--cor-fundo-alternativo);
-            display: flex; flex-direction: column; min-height: 100vh;
-        }
-        main {
-            flex: 1; display: flex; align-items: center;
-            justify-content: center; padding: 4rem 1.5rem;
-        }
-        .auth-container {
-            background: var(--cor-fundo); border-radius: var(--radius);
-            box-shadow: var(--sombra-suave); border: 1px solid var(--cor-borda);
-            padding: 2.5rem 3rem; width: 100%; max-width: 420px;
-            text-align: center; animation: fadeIn 0.5s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .auth-toggle {
-            position: relative; background-color: var(--cor-fundo-alternativo);
-            border-radius: 50px; display: grid; grid-template-columns: 1fr 1fr;
-            padding: 0.3rem; margin-bottom: 2rem; border: 1px solid var(--cor-borda);
-        }
-        .auth-toggle button {
-            background: transparent; border: none; font-size: 0.95rem;
-            font-family: var(--font-primary); font-weight: 600;
-            color: var(--cor-texto-secundario); cursor: pointer;
-            padding: 0.6rem 1rem; border-radius: 50px;
-            transition: color 0.3s ease; position: relative; z-index: 2;
-        }
-        .auth-toggle button.active { color: #ffffff; }
-        .glider {
-            position: absolute; top: 0.3rem; left: 0.3rem;
-            height: calc(100% - 0.6rem); background: var(--cor-primaria);
-            border-radius: 50px; box-shadow: 0 3px 10px -2px rgba(79, 140, 255, 0.4);
-            transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1), width 0.3s cubic-bezier(0.65, 0, 0.35, 1);
-            z-index: 1;
-        }
-        .auth-content { transition: opacity 0.2s ease-out, transform 0.2s ease-out; }
-        .auth-content.fading-out { opacity: 0; transform: translateY(10px); }
-        #auth-title {
-            font-size: 1.8rem; font-weight: 700;
-            color: var(--cor-texto-principal); margin-bottom: 1.5rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1rem;
-            text-align: left;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid var(--cor-borda);
-            border-radius: var(--radius);
-            font-size: 1rem;
-            font-family: var(--font-primary);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--cor-primaria);
-            box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
-        }
-        #submit-btn {
-            width: 100%;
-            background: var(--cor-primaria);
-            color: #fff;
-            border: none;
-            padding: 0.8rem;
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: var(--font-primary);
-            border-radius: var(--radius);
-            cursor: pointer;
-            transition: all 0.2s ease;
-            margin-top: 0.5rem;
-        }
-        #submit-btn:hover {
-            background: #2566d6;
-            transform: translateY(-2px);
-        }
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--cor-texto-secundario);
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin: 1.5rem 0;
-        }
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid var(--cor-borda);
-        }
-        .divider:not(:empty)::before { margin-right: .5em; }
-        .divider:not(:empty)::after { margin-left: .5em; }
 
-        #google-login-btn {
-            font-family: var(--font-primary); width: 100%; padding: 0.8rem 1.5rem;
-            font-size: 1rem; border-radius: var(--radius); border: 1px solid var(--cor-borda);
-            background: var(--cor-fundo); color: var(--cor-texto-secundario);
-            font-weight: 600; cursor: pointer; box-shadow: none;
-            transition: all 0.2s ease; display: inline-flex;
-            align-items: center; justify-content: center; gap: 0.8rem;
-        }
-        #google-login-btn:hover {
-            border-color: var(--cor-primaria); color: var(--cor-primaria);
-            background: var(--cor-fundo-claro);
-        }
-        #google-login-btn .google-icon { width: 1.25rem; height: 1.25rem; }
-        #auth-msg {
-            font-size: 0.95rem; min-height: 1.5em; font-weight: 500;
-            color: var(--cor-texto-secundario); opacity: 0; transition: all 0.3s ease;
-            margin-top: 1rem;
-        }
-        #auth-msg.visible { opacity: 1; }
-    </style>
+    <link rel="stylesheet" href="styles/main.css">
+
 </head>
 <body>
+    <div class="preloader">
+        <div class="chat-bubble">
+            I 
+            <div class="correction-text">
+                <span class="wrong-text">has</span>
+                <span class="correct-text">have</span>
+            </div>
+             a question...
+            <div class="corrector-logo">i</div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+    <script src="scripts/services/firebase.js" defer></script>
     <header>
         <div class="header-container">
             <h1 class="logo"><a href="index.html">Ingleis</a></h1>
@@ -136,7 +34,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="login-main">
         <div class="auth-container">
             <div class="auth-toggle">
                 <div class="glider"></div>
@@ -157,7 +55,7 @@
                     <div class="form-group">
                         <input type="password" id="password-input" placeholder="Sua senha" required>
                     </div>
-                    <button type="submit" id="submit-btn">Entrar</button>
+                    <button type="submit" id="submit-btn" class="cta-button">Entrar</button>
                 </form>
 
                 <div class="divider">ou</div>
@@ -186,149 +84,8 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-    <script src="services/firebase.js"></script>
-    <script src="script.js"></script>
-
-    <script>
-        const loginTab = document.getElementById('login-tab');
-        const cadastroTab = document.getElementById('cadastro-tab');
-        const glider = document.querySelector('.auth-toggle .glider');
-        const authContent = document.getElementById('auth-content');
-        const authTitle = document.getElementById('auth-title');
-        const nameGroup = document.getElementById('name-group');
-        const submitBtn = document.getElementById('submit-btn');
-        const emailForm = document.getElementById('email-form');
-        const authMsg = document.getElementById('auth-msg');
-        let modo = 'login';
-
-        function moveGlider(target) {
-            glider.style.width = `${target.offsetWidth}px`;
-            glider.style.transform = `translateX(${target.offsetLeft}px)`;
-        }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            moveGlider(document.querySelector('.auth-toggle .active'));
-        });
-
-        function alternarModo(novoModo, targetButton) {
-            if (modo === novoModo) return;
-            modo = novoModo;
-            moveGlider(targetButton);
-            loginTab.classList.toggle('active', modo === 'login');
-            cadastroTab.classList.toggle('active', modo === 'cadastro');
-
-            authContent.classList.add('fading-out');
-            setTimeout(() => {
-                authTitle.textContent = modo === 'login' ? 'Acesse sua conta' : 'Crie sua conta grátis';
-                nameGroup.style.display = modo === 'cadastro' ? 'block' : 'none';
-                submitBtn.textContent = modo === 'login' ? 'Entrar' : 'Criar conta';
-                authMsg.textContent = '';
-                authMsg.classList.remove('visible');
-                authContent.classList.remove('fading-out');
-            }, 200);
-        }
-
-        loginTab.addEventListener('click', (e) => alternarModo('login', e.currentTarget));
-        cadastroTab.addEventListener('click', (e) => alternarModo('cadastro', e.currentTarget));
-        
-        function salvarUsuarioLocal(user) {
-            if (!user) return;
-            const data = {
-                displayName: user.displayName, email: user.email,
-                photoURL: user.photoURL, uid: user.uid
-            };
-            localStorage.setItem('usuarioIngleis', JSON.stringify(data));
-        }
-
-        async function handleRedirect(user) {
-            const userDoc = await firebase.firestore().collection('usuarios').doc(user.uid).get();
-            if (!userDoc.exists || !userDoc.data().idioma) {
-                authMsg.textContent = `Bem-vindo(a), ${user.displayName || user.email}! Vamos configurar seu perfil.`;
-                setTimeout(() => { window.location.href = 'completar-perfil.html'; }, 1500);
-            } else {
-                authMsg.textContent = `Que bom te ver de novo, ${user.displayName || user.email}!`;
-                setTimeout(() => { window.location.href = 'index.html'; }, 1500);
-            }
-        }
-
-        emailForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const nome = document.getElementById('name-input').value;
-            const email = document.getElementById('email-input').value;
-            const senha = document.getElementById('password-input').value;
-
-            authMsg.textContent = 'Processando...';
-            authMsg.classList.add('visible');
-            authMsg.style.color = 'var(--cor-texto-secundario)';
-
-            try {
-                let userCredential;
-                if (modo === 'cadastro') {
-                    if (!nome) throw { code: 'auth/missing-name' };
-                    userCredential = await window.firebaseIngleis.criarUsuarioComEmailSenha(email, senha);
-                    await window.firebaseIngleis.atualizarPerfilUsuario({ displayName: nome });
-                    await window.firebaseIngleis.salvarPerfil(userCredential.user.uid, { displayName: nome, email: email });
-                } else {
-                    userCredential = await window.firebaseIngleis.loginComEmailSenha(email, senha);
-                }
-                
-                salvarUsuarioLocal(userCredential.user);
-                authMsg.style.color = 'var(--cor-destaque)';
-                await handleRedirect(userCredential.user);
-
-            } catch (err) {
-                console.error("Erro de autenticação:", err.code);
-                authMsg.style.color = '#e53e3e';
-                let mensagemErro;
-
-                switch (err.code) {
-                    case 'auth/missing-name':
-                        mensagemErro = 'Por favor, informe seu nome para o cadastro.';
-                        break;
-                    case 'auth/weak-password':
-                        mensagemErro = 'Sua senha deve ter no mínimo 6 caracteres.';
-                        break;
-                    case 'auth/email-already-in-use':
-                        mensagemErro = 'Este e-mail já foi cadastrado. Tente fazer login.';
-                        break;
-                    case 'auth/invalid-email':
-                        mensagemErro = 'O formato do e-mail é inválido.';
-                        break;
-                    case 'auth/user-not-found':
-                        mensagemErro = 'Nenhuma conta encontrada com este e-mail.';
-                        break;
-                    case 'auth/wrong-password':
-                        mensagemErro = 'Senha incorreta. Tente novamente.';
-                        break;
-                    case 'auth/too-many-requests':
-                        mensagemErro = 'Muitas tentativas de login. Tente novamente mais tarde.';
-                        break;
-                    default:
-                        mensagemErro = 'Ocorreu um erro. Verifique seus dados e tente novamente.';
-                        break;
-                }
-                authMsg.textContent = mensagemErro;
-            }
-        });
-
-        document.getElementById('google-login-btn').addEventListener('click', async () => {
-             authMsg.textContent = 'Aguarde...';
-             authMsg.classList.add('visible');
-             authMsg.style.color = 'var(--cor-texto-secundario)';
-             try {
-                const result = await window.firebaseIngleis.loginGoogle();
-                salvarUsuarioLocal(result.user);
-                authMsg.style.color = 'var(--cor-destaque)';
-                await handleRedirect(result.user);
-             } catch(err) {
-                console.error("Erro Google:", err.code, err.message);
-                authMsg.style.color = '#e53e3e';
-                authMsg.textContent = 'Ocorreu um erro ao tentar entrar com o Google.';
-             }
-        });
-    </script>
+    
+    <script src="scripts/main.js" defer></script>
+    <script src="scripts/pages/login.js" defer></script>
 </body>
 </html>

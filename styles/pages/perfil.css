@@ -1,0 +1,171 @@
+/* Estilos específicos da página de Perfil */
+.perfil-main {
+    padding: 3rem 1.5rem;
+    background-color: var(--cor-fundo-alternativo);
+    flex: 1;
+}
+.perfil-container {
+    max-width: 420px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--sombra-suave);
+    padding: 2.5rem 2rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid var(--cor-borda);
+}
+
+#avatar-container-perfil {
+    width: 90px;
+    height: 90px;
+    margin-bottom: 1.2rem;
+}
+
+#avatar-container-perfil > * {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid rgba(79, 140, 255, 0.25);
+    font-size: 3rem;
+    object-fit: cover;
+}
+
+.perfil-nome {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.perfil-email {
+    font-size: 1.05rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.perfil-editar {
+    font-weight: 600;
+    padding: 0.7rem 1.7rem !important; /* !important para sobrescrever .cta-button se necessário */
+}
+
+/* Modal de Edição */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s ease-out;
+}
+@keyframes modalSlideIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+}
+
+.close {
+    color: #aaa;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.avatar-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#avatar-container-modal {
+    width: 80px;
+    height: 80px;
+}
+
+#avatar-container-modal > * {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(79, 140, 255, 0.25);
+    font-size: 2.5rem;
+}
+
+.upload-btn {
+    background: #ccc;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius);
+    cursor: not-allowed;
+    font-weight: 600;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.btn-cancel,
+.btn-save {
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+    font-size: 0.95rem;
+    border: none;
+}
+
+.btn-cancel {
+    background: #f1f3f7;
+    color: #666;
+}
+
+.btn-cancel:hover {
+    background: #e3e8ee;
+}
+
+.btn-save {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.btn-save:hover {
+    background: #2566d6;
+}

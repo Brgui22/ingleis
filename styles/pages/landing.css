@@ -1,33 +1,14 @@
-/* ============================================= */
-/* ESTILOS DA LANDING PAGE              */
-/* ============================================= */
-
-:root {
-    --cor-fundo-hero: #f8f9fc;
-    --cor-fundo-features: #ffffff;
-    --cor-fundo-cta: #eef2ff;
-    --hero-headline: #1e293b;
-    --hero-subheadline: #475569;
-    --card-border: #e2e8f0;
-}
-
-/* Reset para a página principal */
-body {
-    background-color: var(--cor-fundo-features);
-    overflow-x: hidden;
-}
-
+/* Estilos da Landing Page */
 main {
     max-width: 100%;
     padding: 0;
 }
 
-/* --- Seção Hero --- */
 .hero-section {
-    width: 100vw;
+    width: 100%;
     padding: 6rem 2rem;
-    background-color: var(--cor-fundo-hero);
-    border-bottom: 1px solid var(--card-border);
+    background-color: var(--cor-fundo-alternativo);
+    border-bottom: 1px solid var(--cor-borda);
 }
 
 .hero-container {
@@ -43,41 +24,23 @@ main {
     font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.2;
-    color: var(--hero-headline);
+    color: var(--cor-texto-principal);
     margin-bottom: 1.5rem;
 }
 
 .hero-text p {
     font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--hero-subheadline);
+    color: var(--cor-texto-secundario);
     margin-bottom: 2.5rem;
     max-width: 550px;
-}
-
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-    background: var(--cor-primaria);
-    border-radius: 50px;
-    text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 20px rgba(79, 140, 255, 0.2);
-}
-
-.cta-button:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(79, 140, 255, 0.3);
 }
 
 .hero-visual {
     background: white;
     border-radius: 12px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--cor-borda);
     padding: 1rem;
 }
 
@@ -86,7 +49,7 @@ main {
     align-items: center;
     gap: 0.5rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--cor-borda);
 }
 
 .hero-visual .dot {
@@ -106,11 +69,10 @@ main {
     border-radius: 6px;
 }
 
-/* --- Seção de Funcionalidades --- */
 .features-section {
-    width: 100vw;
+    width: 100%;
     padding: 6rem 2rem;
-    background-color: var(--cor-fundo-features);
+    background-color: var(--cor-fundo);
 }
 
 .features-container {
@@ -122,13 +84,13 @@ main {
 .section-title {
     font-size: 2.8rem;
     font-weight: 800;
-    color: var(--hero-headline);
+    color: var(--cor-texto-principal);
     margin-bottom: 1rem;
 }
 
 .section-subtitle {
     font-size: 1.2rem;
-    color: var(--hero-subheadline);
+    color: var(--cor-texto-secundario);
     margin-bottom: 4rem;
     max-width: 600px;
     margin-left: auto;
@@ -146,7 +108,7 @@ main {
     background: #fff;
     padding: 2.5rem;
     border-radius: var(--radius);
-    border: 1px solid var(--card-border);
+    border: 1px solid var(--cor-borda);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -162,7 +124,7 @@ main {
     width: 60px;
     height: 60px;
     border-radius: 12px;
-    background-color: var(--cor-fundo-cta);
+    background-color: var(--cor-fundo-claro);
     color: var(--cor-primaria);
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
@@ -171,18 +133,18 @@ main {
 .feature-card h4 {
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--hero-headline);
+    color: var(--cor-texto-principal);
     margin-bottom: 0.8rem;
 }
 
 .feature-card p {
     font-size: 1rem;
     line-height: 1.6;
-    color: var(--hero-subheadline);
+    color: var(--cor-texto-secundario);
 }
 
 
-/* --- Responsividade --- */
+/* Responsividade da Landing Page */
 @media (max-width: 992px) {
     .hero-container {
         grid-template-columns: 1fr;
@@ -196,7 +158,7 @@ main {
         margin-right: auto;
     }
     .hero-visual {
-        grid-row: 1; /* Coloca a imagem no topo em telas menores */
+        grid-row: 1;
         margin-bottom: 3rem;
     }
     .features-grid {

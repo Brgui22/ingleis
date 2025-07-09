@@ -1,0 +1,29 @@
+/* Estilos para formulários */
+.form-group {
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-family: var(--font-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(79, 140, 255, 0.15);
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
