@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete seu Perfil - Ingleis</title>
+    <link rel="stylesheet" href="global.css">
+    <!-- Importando a fonte Poppins, que é moderna e robusta -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Sincronizando variáveis com global.css e adicionando a nova fonte */
+            --cor-primaria: #4f8cff;
+            --cor-secundaria: #f8fafc;
+            --cor-destaque: #00c896;
+            --cor-texto: #23272f;
+            --cor-borda: #e3e8ee;
+            --sombra: 0 4px 24px rgba(79, 140, 255, 0.07);
+            --radius: 16px;
+            --font-main: 'Poppins', 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--cor-secundaria);
+        }
+
+        .container-perfil {
+            background: #fff;
+            border-radius: var(--radius);
+            box-shadow: var(--sombra);
+            padding: 2.5rem 3rem;
+            width: 100%;
+            max-width: 650px;
+            border: 1px solid var(--cor-borda);
+            text-align: center;
+            margin: 2rem auto;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: var(--cor-primaria);
+            margin-bottom: 0.5rem;
+            font-size: 2.4rem;
+            font-weight: 700;
+        }
+
+        .legenda {
+            color: var(--cor-texto);
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0 0 2.5rem 0;
+        }
+
+        .opcoes-idioma {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .opcao-idioma {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--cor-secundaria);
+            border: 2px solid var(--cor-borda);
+            border-radius: 12px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--cor-texto);
+        }
+
+        .opcao-idioma:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--sombra);
+            border-color: var(--cor-primaria);
+        }
+
+        .opcao-idioma.selected {
+            background: #e0e7ff;
+            border-color: var(--cor-primaria);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(79, 140, 255, 0.15);
+        }
+
+        .idioma-bandeira {
+            width: 28px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .chips-dificuldade {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem; /* Espaço para o input abaixo */
+        }
+
+        .chip-dificuldade {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #f1f3f7;
+            border-radius: 25px;
+            padding: 0.7rem 1.4rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--cor-primaria); /* Cor do texto e ícone não selecionado */
+            border: 2px solid #f1f3f7; /* Borda da mesma cor do fundo */
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+            animation: popIn 0.3s ease;
+        }
+        
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        
+        .chip-dificuldade .icon {
+            width: 20px;
+            height: 20px;
+            stroke-width: 2.5px;
+            stroke: currentColor;
+            fill: none; /* Garante que o ícone não seja preenchido com preto por padrão */
+        }
+
+        .chip-dificuldade:hover {
+            border-color: var(--cor-primaria);
+        }
+        
+        .chip-dificuldade.selected {
+            background-color: #e0e7ff; /* Fundo azul claro */
+            color: var(--cor-primaria); /* Texto e ícone azul */
+            border-color: var(--cor-primaria); /* Borda azul */
+        }
+
+        .chip-dificuldade input {
+            display: none;
+        }
+        
+        .input-outro-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            border: 2px solid var(--cor-borda);
+            border-radius: 12px;
+            padding-left: 1.2rem;
+            transition: all 0.2s ease;
+        }
+        
+        .input-outro-container:focus-within {
+            border-color: var(--cor-primaria);
+            box-shadow: var(--sombra);
+        }
+
+        .input-outro-container .icon {
+            width: 24px;
+            height: 24px;
+            color: var(--cor-primaria);
+            flex-shrink: 0;
+        }
+        
+        #outra-dificuldade-input {
+            border: none;
+            outline: none;
+            background: none;
+            width: 100%;
+            font-family: var(--font-main);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--cor-texto);
+        }
+        
+        #btn-adicionar-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent; /* Fundo transparente */
+            color: var(--cor-destaque); /* Cor do texto e ícone */
+            border: 2px solid var(--cor-destaque); /* Borda */
+            border-radius: 10px;
+            padding: 0.6rem 1rem;
+            margin: 0.3rem;
+            flex-shrink: 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        #btn-adicionar-chip:hover {
+            background: var(--cor-destaque); /* Preenche ao passar o mouse */
+            color: white;
+            transform: scale(1.05);
+        }
+
+        #btn-adicionar-chip:disabled {
+            background: #ccc;
+            border-color: #ccc;
+            color: #888;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        #btn-adicionar-chip .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .btn-salvar {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            border: none;
+            background: var(--cor-destaque);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(0, 200, 150, 0.15);
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .btn-salvar:hover {
+            background: #00b386;
+            box-shadow: 0 8px 25px rgba(0, 200, 150, 0.25);
+            transform: translateY(-3px);
+        }
+        
+        .btn-salvar .icon {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.4s ease;
+        }
+        
+        .btn-salvar:hover .icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        #perfil-msg {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            min-height: 1.5em;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        #perfil-msg.visible {
+            opacity: 1;
+        }
+
+        span {
+            font-family: var(--font-main) !important;
+        }
+
+        @media (max-width: 600px) {
+            .container-perfil { padding: 2rem 1.5rem; }
+            h2 { font-size: 2rem; }
+            .legenda { font-size: 1rem; }
+            .opcoes-idioma { gap: 1rem; }
+            .opcao-idioma { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="header-container">
+            <h1 class="logo"><a href="index.html" style="text-decoration:none;color:inherit;">Ingleis</a></h1>
+        </div>
+        <div class="container-perfil">
+            <h2>Vamos personalizar sua jornada!</h2>
+            
+            <fieldset>
+                <p class="legenda">Primeiro, qual língua você quer aprimorar?</p>
+                <div class="opcoes-idioma">
+                    <button class="opcao-idioma" data-idioma="Inglês">
+                        <img src="https://paises.ibge.gov.br/img/bandeiras/GB.gif" alt="Bandeira da Grã-Bretanha" class="idioma-bandeira">
+                        <span>Inglês</span>
+                    </button>
+                    <button class="opcao-idioma" data-idioma="Espanhol">
+                        <img src="https://paises.ibge.gov.br/img/bandeiras/ES.gif" alt="Bandeira da Espanha" class="idioma-bandeira">
+                        <span>Espanhol</span>
+                    </button>
+                    <button class="opcao-idioma" data-idioma="Francês">
+                        <img src="https://paises.ibge.gov.br/img/bandeiras/FR.gif" alt="Bandeira da França" class="idioma-bandeira">
+                        <span>Francês</span>
+                    </button>
+                    <button class="opcao-idioma" data-idioma="Russo">
+                        <img src="https://paises.ibge.gov.br/img/bandeiras/RU.gif" alt="Bandeira da Rússia" class="idioma-bandeira">
+                        <span>Russo</span>
+                    </button>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <p class="legenda">Agora, nos diga quais são seus maiores desafios.</p>
+                <div class="chips-dificuldade" id="chips-container">
+                    <label class="chip-dificuldade">
+                        <input type="checkbox" value="Falar">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line></svg>
+                        <span>Falar</span>
+                    </label>
+                    <label class="chip-dificuldade">
+                        <input type="checkbox" value="Ouvir">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path><path d="M18 18.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"></path><path d="M12 2a9 9 0 0 0-9 9v1c0 4 6 5 6 5"></path><path d="M12 2a9 9 0 0 1 9 9v1c0 4-6 5-6 5"></path></svg>
+                        <span>Ouvir</span>
+                    </label>
+                    <label class="chip-dificuldade">
+                        <input type="checkbox" value="Gramática">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                        <span>Gramática</span>
+                    </label>
+                    <label class="chip-dificuldade">
+                        <input type="checkbox" value="Vocabulário">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 4 4 4-4"></path><path d="M7 20V4"></path><path d="M14 4h3a2 2 0 0 1 2 2v2"></path><path d="M21 14v-2a2 2 0 0 0-2-2h-1"></path></svg>
+                        <span>Vocabulário</span>
+                    </label>
+                </div>
+            
+                <p class="legenda" style="margin-top: 2rem; margin-bottom: 1rem;">Tem outra dificuldade específica?</p>
+                <div class="input-outro-container">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"></path></svg>
+                    <input type="text" id="outra-dificuldade-input" placeholder="Digite uma dificuldade...">
+                    <button id="btn-adicionar-chip" aria-label="Adicionar dificuldade">
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        <span>Adicionar</span>
+                    </button>
+                </div>
+            </fieldset>
+
+            <button class="btn-salvar">
+                <span>Começar Jornada</span>
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            </button>
+            <p id="perfil-msg"></p>
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="services/firebase.js"></script>
+    <script>
+        let idiomaSelecionado = null;
+        const chipsContainer = document.getElementById('chips-container');
+        const outraDificuldadeInput = document.getElementById('outra-dificuldade-input');
+        const btnAdicionarChip = document.getElementById('btn-adicionar-chip');
+        const msgPerfil = document.getElementById('perfil-msg');
+        const LIMITE_TAGS = 20;
+
+        // Função para verificar e atualizar o estado do botão de adicionar
+        const verificarLimiteDeChips = () => {
+            const totalChips = chipsContainer.children.length;
+            if (totalChips >= LIMITE_TAGS) {
+                btnAdicionarChip.disabled = true;
+                outraDificuldadeInput.disabled = true;
+                outraDificuldadeInput.placeholder = "Limite de tags atingido";
+            } else {
+                btnAdicionarChip.disabled = false;
+                outraDificuldadeInput.disabled = false;
+                outraDificuldadeInput.placeholder = "Digite uma dificuldade...";
+            }
+        };
+
+        // Função para adicionar o evento de toggle a um chip
+        const adicionarEventoToggle = (chip) => {
+            chip.addEventListener('click', function() {
+                const input = this.querySelector('input[type="checkbox"]');
+                setTimeout(() => {
+                    this.classList.toggle('selected', input.checked);
+                }, 0);
+            });
+        };
+
+        // Função para criar um novo chip
+        const criarNovoChip = (texto) => {
+            if (!texto || chipsContainer.children.length >= LIMITE_TAGS) {
+                if(chipsContainer.children.length >= LIMITE_TAGS){
+                    msgPerfil.textContent = 'Você atingiu o limite de 20 dificuldades.';
+                    msgPerfil.style.color = '#EA4335';
+                    msgPerfil.classList.add('visible');
+                    setTimeout(() => msgPerfil.classList.remove('visible'), 3000);
+                }
+                return;
+            }
+
+            const novoChip = document.createElement('label');
+            novoChip.className = 'chip-dificuldade selected';
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = texto;
+            checkbox.checked = true;
+
+            const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            icon.setAttribute('class', 'icon');
+            icon.setAttribute('viewBox', '0 0 24 24');
+            icon.innerHTML = `<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line>`;
+            
+            const span = document.createElement('span');
+            span.textContent = texto;
+
+            novoChip.appendChild(checkbox);
+            novoChip.appendChild(icon);
+            novoChip.appendChild(span);
+            
+            chipsContainer.appendChild(novoChip);
+            adicionarEventoToggle(novoChip);
+
+            outraDificuldadeInput.value = '';
+            outraDificuldadeInput.focus();
+            verificarLimiteDeChips(); // Verifica o limite após adicionar
+        };
+
+        // Eventos para adicionar chip
+        btnAdicionarChip.addEventListener('click', () => criarNovoChip(outraDificuldadeInput.value.trim()));
+        outraDificuldadeInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                criarNovoChip(outraDificuldadeInput.value.trim());
+            }
+        });
+
+        // Setup inicial
+        document.querySelectorAll('.chip-dificuldade').forEach(adicionarEventoToggle);
+        verificarLimiteDeChips(); // Verifica o limite no carregamento da página
+
+        // Seleção de Idioma
+        document.querySelectorAll('.opcao-idioma').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.opcao-idioma').forEach(btn => btn.classList.remove('selected'));
+                this.classList.add('selected');
+                idiomaSelecionado = this.getAttribute('data-idioma');
+            });
+        });
+
+        // Botão de Salvar
+        document.querySelector('.btn-salvar').addEventListener('click', async function() {
+            const dificuldades = Array.from(document.querySelectorAll('#chips-container input:checked')).map(cb => cb.value);
+            
+            if (!idiomaSelecionado) {
+                msgPerfil.textContent = 'Por favor, selecione um idioma.';
+                msgPerfil.style.color = '#EA4335';
+                msgPerfil.classList.add('visible');
+                return;
+            }
+
+            if (dificuldades.length === 0) {
+                msgPerfil.textContent = 'Selecione ou adicione pelo menos uma dificuldade.';
+                msgPerfil.style.color = '#EA4335';
+                msgPerfil.classList.add('visible');
+                return;
+            }
+
+            msgPerfil.textContent = 'Salvando...';
+            msgPerfil.style.color = '#23272f';
+            msgPerfil.classList.add('visible');
+
+            try {
+                const usuario = JSON.parse(localStorage.getItem('usuarioIngleis'));
+                if (!usuario) throw new Error('Usuário não autenticado.');
+
+                await window.firebaseIngleis.salvarPerfil(usuario.uid, {
+                    idioma: idiomaSelecionado,
+                    dificuldades: dificuldades
+                });
+
+                msgPerfil.textContent = 'Perfil salvo com sucesso! Redirecionando...';
+                msgPerfil.style.color = 'var(--cor-destaque)';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+            } catch (e) {
+                console.error("Erro ao salvar perfil:", e);
+                msgPerfil.textContent = 'Ocorreu um erro ao salvar o perfil.';
+                msgPerfil.style.color = '#EA4335';
+            }
+        });
+    </script>
+</body>
+</html>
